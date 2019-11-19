@@ -1,16 +1,8 @@
 #include <stdio.h>
 #include <stdlib.h>
+#include <listModule.h>
 
 
-#define FALSE 0
-#define TRUE !(FALSE)
-
-typedef struct element {
-  int val;
-  struct element *next;
-} T_element;
-
-typedef int Bool;
 
 Bool isEven(int v){
   return v%2==0;
@@ -19,9 +11,6 @@ Bool isEven(int v){
 Bool isEmpty(T_element * p){// check if the list is empty
   return (p==NULL);
 }
-
-
-
 
 T_element * newList(int n){
   int v;
@@ -51,8 +40,6 @@ T_element * newList(int n){
 }
 
 
-
-
 T_element * newListFromArray(int *arr, int n ){
   T_element *p0;    // point to the list; NULL iff the list is empty
   T_element *p;     // point to the CURRENT element
@@ -78,7 +65,6 @@ T_element * newListFromArray(int *arr, int n ){
 
 }
 
-
 void showList(T_element * p){
   if (isEmpty(p))
   printf("EMPTY");
@@ -94,22 +80,4 @@ void showListReverse(T_element * p){
   if (!isEmpty(p->next))
     showListReverse(p->next);
   printf("%d ", p->val);
-}
-
-
-
-int main() {
-  #define N 10
-  T_element * p0, *p_tmp;
-  int i;
-  int arr[N]={0,1,2,3,4,5,6,7,8,9};
-
-  p0= newListFromArray(arr,N);
-  printf("Your list is:\n");
-  showList(p0);
-  showListReverse(p0);
-
-
-getchar();
-return 0;
 }
